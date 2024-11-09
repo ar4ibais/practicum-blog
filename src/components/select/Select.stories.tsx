@@ -24,7 +24,7 @@ export const SelectStory: Story = {
 			<>
 				<Select
 					selected={selected}
-					onChange={setSelected}
+					setValue={setSelected}
 					options={options}
 					title='Название радиогруппы'
 				/>

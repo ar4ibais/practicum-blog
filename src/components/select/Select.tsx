@@ -16,13 +16,13 @@ type SelectProps = {
 	selected: OptionType | null;
 	options: OptionType[];
 	placeholder?: string;
-	onChange?: (selected: OptionType) => void;
+	setValue?: (arg: OptionType) => void;
 	onClose?: () => void;
 	title?: string;
 };
 
 export const Select = (props: SelectProps) => {
-	const { options, placeholder, selected, onChange, onClose, title } = props;
+	const { options, placeholder, selected, setValue, onClose, title } = props;
 	const [isOpen, setIsOpen] = useState<boolean>(false);
 	const rootRef = useRef<HTMLDivElement>(null);
 	const placeholderRef = useRef<HTMLDivElement>(null);
@@ -41,7 +41,7 @@ export const Select = (props: SelectProps) => {
 
 	const handleOptionClick = (option: OptionType) => {
 		setIsOpen(false);
-		onChange?.(option);
+		setValue?.(option);
 	};
 	const handlePlaceHolderClick: MouseEventHandler<HTMLDivElement> = () => {
 		setIsOpen((isOpen) => !isOpen);

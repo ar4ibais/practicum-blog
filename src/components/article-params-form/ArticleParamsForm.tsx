@@ -11,7 +11,6 @@ import {
 	backgroundColors,
 	contentWidthArr,
 	fontColors,
-	fontFamilyClasses,
 	fontFamilyOptions,
 	fontSizeOptions,
 } from 'src/constants/articleProps';
@@ -19,6 +18,13 @@ import { Separator } from '../separator';
 
 export const ArticleParamsForm = () => {
 	const [open, setOpen] = useState(false);
+
+	const [font, setFont] = useState(fontFamilyOptions[0]);
+	const [size, setSize] = useState(fontSizeOptions[0]);
+	const [fontColor, setFontColor] = useState(fontColors[0]);
+	const [bgColor, setBgColor] = useState(backgroundColors[0]);
+	const [width, setWidth] = useState(contentWidthArr[0]);
+
 	const toggleOpen = () => {
 		setOpen(!open);
 	};
@@ -29,58 +35,40 @@ export const ArticleParamsForm = () => {
 				<form className={styles.form}>
 					<Select
 						title='Шрифт'
-						selected={{
-							title: 'Open Sans',
-							value: 'Open Sans',
-							className: fontFamilyClasses[0],
-						}}
+						selected={font}
 						options={fontFamilyOptions}
+						setValue={setFont}
 					/>
 					<Spacing size={50} />
 					<RadioGroup
 						title='Размер шрифта'
 						name='size'
-						selected={{
-							title: '18px',
-							value: '18px',
-							className: 'font-size-18',
-						}}
+						selected={size}
 						options={fontSizeOptions}
+						onChange={setSize}
 					/>
 					<Spacing size={50} />
 					<Select
 						title='Цвет шрифта'
-						selected={{
-							title: 'Черный',
-							value: '#000000',
-							className: 'font-black',
-							optionClassName: 'option-black',
-						}}
+						selected={fontColor}
 						options={fontColors}
+						setValue={setFontColor}
 					/>
 					<Spacing size={50} />
 					<Separator />
 					<Spacing size={50} />
 					<Select
 						title='Цвет фонта'
-						selected={{
-							title: 'Белый',
-							value: '#FFFFFF',
-							className: 'bg-white',
-							optionClassName: 'option-white',
-						}}
+						selected={bgColor}
 						options={backgroundColors}
+						setValue={setBgColor}
 					/>
 					<Spacing size={50} />
 					<Select
 						title='Ширина контента'
-						selected={{
-							title: 'Широкий',
-							value: '1394px',
-							className: 'width-wide',
-							optionClassName: 'option-wide',
-						}}
+						selected={width}
 						options={contentWidthArr}
+						setValue={setWidth}
 					/>
 					<div className={styles.bottomContainer}>
 						<Button title='Сбросить' type='reset' />
