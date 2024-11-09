@@ -16,7 +16,7 @@ export const ArrowButton = ({ open, toggleOpen }: Props) => {
 				role='button'
 				aria-label='Открыть/Закрыть форму параметров статьи'
 				tabIndex={0}
-				className={styles.container}>
+				className={clsx(styles.container, open && styles.container_open)}>
 				<img
 					src={arrow}
 					alt='иконка стрелочки'
